@@ -1,0 +1,9 @@
+BeaverHouse/bluearchive-torment-front:
+  - source: image/
+    dest: public/image/
+    deleteOrphaned: true
+  - source: result_detail/
+    dest: src/data/
+    deleteOrphaned: true
+  - source: other/constant.js
+    dest: src/constant.js

@@ -1,0 +1,20 @@
+name: Sync data to BeaverHouse/bluearchive-torment-front
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - other/constant.js
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: BetaHuhn/repo-file-sync-action@v1
+        with:
+          GH_PAT: ${{ secrets.GH_PAT_ORGANIZATION }}
+          COMMIT_PREFIX: 🚀
+          PR_LABELS: false
+          ASSIGNEES: HU-Lee

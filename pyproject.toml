@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "bluearchive-torment-data"
+version = "0.1.0"
+description = "Data & processing code for BA Torment"
+authors = ["HU-Lee <haulrest@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.31.0"
+pytest = "^8.1.1"
+pylint = "^3.1.0"
+mypy = "^1.9.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
