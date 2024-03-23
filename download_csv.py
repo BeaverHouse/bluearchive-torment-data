@@ -27,9 +27,9 @@ def get_csv(category: str, type: str, season: int):
 
 if __name__ == "__main__":
     # 24.03.13. ~ 24.03.20. 시가지 비나 (Torment 방어타입: 특수장갑)
-    category: str   = "대결전"
+    category: str   = "총력전"
     type: str       = "신비"         
-    # season: int     = 63            # 총력전
-    season: int     = 8            # 대결전
+    season: int     = 64            # 총력전
+    # season: int     = 9            # 대결전
     
     get_csv(category=category, type=type, season=season)
