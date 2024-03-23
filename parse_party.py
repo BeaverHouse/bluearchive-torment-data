@@ -34,6 +34,7 @@ def parse_main():
     for file in os.listdir('rawdetail'):
         f_csv = open(f"rawdetail/{file}",'r')
         reader = csv.reader(f_csv)
+        next(reader)
 
         # 캐릭터 필터 저장용
         filters = collections.defaultdict(lambda: [0]*9)
@@ -44,24 +45,21 @@ def parse_main():
         max_party_cnt = -1
         min_party_cnt = 1000
 
-        # 이전 점수 저장용
         score_cut = 86000000 if file.startswith("S3") else 35500000
         
         for idx, row in enumerate(reader):
-            if idx == 0 : continue
-
             dic = {}
 
             score = int(row[1])
 
             # Cut by score or max 2000 rows
-            if idx > 2000 or score_cut > score: break
+            if idx >= 2000 or score_cut > score: break
 
             if is_cell_blank(row[0]): break
 
             # 점수 순위 저장
             dic["rank"] = int(row[0])
-            dic["score"] = int(row[1])
+            dic["score"] = score
 
             i = 0
             partys = []
@@ -101,7 +99,7 @@ def parse_main():
                 i += 1
 
             dic["partys"] = partys
-            dic["search_keys"] = list(search_keys)
+            dic["search_keys"] = sorted(list(search_keys))
             dic["party_count"] = len(partys)
             if len(partys) > max_party_cnt: max_party_cnt = len(partys)
             if len(partys) < min_party_cnt: min_party_cnt = len(partys)
