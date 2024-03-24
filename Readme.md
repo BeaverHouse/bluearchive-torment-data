@@ -34,30 +34,29 @@
 
 ## Description
 
-**❗❗This app is KOREAN only.❗❗**
+**❗❗ This app is KOREAN Only.❗❗**
 
-블루아카이브 토먼트 파티찾기의 데이터 저장소입니다.
+Data & processing code for BA Torment.  
+It is processed manually and migrated to [frontend repository].
 
-총력전/대결전 데이터는 [외부 API]에서 원본 데이터를 받아 Python으로 가공하고 있습니다.  
-⚠ 문제시 링크가 삭제될 수 있습니다.
+- Raw data: [API] (can be deleted)
+- Character info: [Schale DB]
 
-캐릭터 정보는 [Schale DB] 소스에서 받아오고 있습니다.
-
-[외부 API]: https://storage.googleapis.com/info.herdatasam.me
+[frontend repository]: https://github.com/BeaverHouse/bluearchive-torment-front
+[API]: https://storage.googleapis.com/info.herdatasam.me
 [Schale DB]: https://github.com/lonqie/SchaleDB
 
 <br>
 
-## Data information
+## Data information (2024.03)
 
-1. **대결전 데이터의 경우 토먼트 순위와 대결전 순위가 일치하지 않습니다.**  
-   이 사이트는 토먼트 클리어를 위한 참고자료 제공이 목적이기 때문에  
-   해당 정보를 추가로 수집하고 있지는 않습니다.
-2. 24년 3월 기준 데이터를 자르는 기준은 다음과 같습니다.  
-   **토먼트 8파티 (+ 대결전 인세인 2파티)** 정도로 기준을 정했기 때문에 점수컷은 널널합니다.
-   - 총력전의 경우 3550만 이상
-   - 대결전의 경우 8600만 이상
-   - 클리어 수가 많을 경우 상위 2000명만 표시
+**Final rank is not same as TORMENT rank in Grand Assault.**
+
+| Category                                 | Value    | Description                |
+| ---------------------------------------- | -------- | -------------------------- |
+| 총력전 (Total Assault, 総力戦) score cut | 35500000 | > TORMENT 8pt              |
+| 대결전 (Grand Assault, 大決戦) score cut | 86000000 | > TORMENT 8pt + INSANE 2pt |
+| Max data count                           | 2000     |
 
 <br>
 
