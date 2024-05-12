@@ -26,10 +26,10 @@ def get_csv(category: str, type: str, season: int):
 
 
 if __name__ == "__main__":
-    # 24.05.01. ~ 24.05.08. SEASON #65 시가지 호드
-    category: str   = "총력전"
-    type: str       = "관통"         
-    season: int     = 65            # 총력전
-    # season: int     = 9            # 대결전
+    # 24.05.15. ~ 24.05.22. SEASON #10: 시가전 예로니무스 (Torment 방어타입: 특수장갑)
+    category: str   = "대결전"
+    type: str       = "신비"         
+    # season: int     = 65            # 총력전
+    season: int     = 10            # 대결전
     
     get_csv(category=category, type=type, season=season)
