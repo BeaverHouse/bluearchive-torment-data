@@ -10,7 +10,7 @@ result = {}
 for e in res_json:
     id = e["Id"]
     name = e["Name"]
-    result[id] = name
+    result[id] = name.replace("*", "-")
 
 # JSON 저장
 with open("character.json", "w", encoding='utf-8') as f:
