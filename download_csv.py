@@ -26,10 +26,10 @@ def get_csv(category: str, type: str, season: int):
 
 
 if __name__ == "__main__":
-    # 24.07.31 ~ 24.08.07: 야외 페로로지라
-    category: str   = "총력전"
+    # 24.08.14. ~ 24.08.21.: 대결전 시즌13 야외 고즈(관통)
+    category: str   = "대결전"
     type: str       = "관통"         
-    season: int     = 68            # 총력전
-    # season: int     = 13            # 대결전
+    # season: int     = 69            # 총력전
+    season: int     = 13            # 대결전
     
     get_csv(category=category, type=type, season=season)
