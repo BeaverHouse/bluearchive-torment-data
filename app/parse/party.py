@@ -45,8 +45,6 @@ def update_party_info_triple(season: str, target_boss: int, rank_df: pl.DataFram
       .with_row_index(offset=1) \
       .join(party_df, on="USER_ID", how="left") \
       .rename({"index": "TORMENT_RANK"}) \
-    
-    print(merged_df)
 
     update_data = list(map(
         lambda x: (f"{season}-{target_boss}", int(x["USER_ID"]), int(x[f"SCORE"]), int(x["TORMENT_RANK"]), int(x["FINAL_RANK"]), x["PARTY_DATA"]),
