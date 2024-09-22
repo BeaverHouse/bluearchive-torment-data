@@ -1,10 +1,14 @@
 import requests
+
 from app.oracle import get_oracle
 
 
 def update_student_info(develop: bool = False) -> dict:
     """
     Update character id and name from SchaleDB
+
+    Args:
+        develop (bool): parameter that indicates if the data is for development or not.
     """
     res = requests.get("https://schaledb.com/data/kr/students.min.json")
 
