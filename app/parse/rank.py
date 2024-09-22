@@ -28,8 +28,9 @@ def get_rank_season_normal(season: str) -> Tuple[int, pl.DataFrame]:
         target_boss = 0
         return target_boss, \
             df.select(pl.col("AccountId", "Rank", "BestRankingPoint")) \
-              .filter(pl.col("BestRankingPoint") > constants.TORMENT_MIN_SCORE) \
-              .sort(by="BestRankingPoint", descending=True)
+              .rename({"AccountId": "USER_ID", "Rank": "FINAL_RANK", "BestRankingPoint": "SCORE"}) \
+              .filter(pl.col("SCORE") > constants.TORMENT_MIN_SCORE) \
+              .sort(by="SCORE", descending=True)
     except Exception as e:
         print(e)
 
@@ -50,8 +51,9 @@ def get_rank_season_triple(season: str) -> Tuple[int, pl.DataFrame]:
                 break
         return target_boss, \
             df.select(pl.col("AccountId", "Rank", "BestRankingPoint", f"Boss{target_boss}")) \
-              .rename({"Rank": "FinalRank"}) \
-              .filter(pl.col(f"Boss{target_boss}") > constants.TORMENT_MIN_SCORE) \
-              .sort(by=f"Boss{target_boss}", descending=True)
+              .rename({"AccountId": "USER_ID", "Rank": "FINAL_RANK", f"Boss{target_boss}": "SCORE"}) \
+              .filter(pl.col("SCORE") > constants.TORMENT_MIN_SCORE) \
+              .filter(pl.col("FINAL_RANK") <= constants.PLATINUM_CUT) \
+              .sort(by="SCORE", descending=True)
     except Exception as e:
         print(e)
