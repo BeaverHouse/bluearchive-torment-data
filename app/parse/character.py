@@ -1,10 +1,11 @@
 import requests
 from app.oracle import get_oracle
 
-"""
-Update character id and name from https://schaledb.com/data/kr/students.min.json
-"""
+
 def update_student_info(develop: bool = False) -> dict:
+    """
+    Update character id and name from SchaleDB
+    """
     res = requests.get("https://schaledb.com/data/kr/students.min.json")
 
     student_info = list(map(
