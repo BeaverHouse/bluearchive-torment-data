@@ -50,6 +50,7 @@ def get_rank_season_triple(season: str) -> Tuple[int, pl.DataFrame]:
                 break
         return target_boss, \
             df.select(pl.col("AccountId", "Rank", "BestRankingPoint", f"Boss{target_boss}")) \
+              .rename({"Rank": "FinalRank"}) \
               .filter(pl.col(f"Boss{target_boss}") > constants.TORMENT_MIN_SCORE) \
               .sort(by=f"Boss{target_boss}", descending=True)
     except Exception as e:
