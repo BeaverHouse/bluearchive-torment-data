@@ -22,11 +22,12 @@ def update_student_info(develop: bool = False) -> dict:
     with get_oracle() as conn:
         cur = conn.cursor()
         current_ids = list(map(lambda x: x[0], cur.execute(f"SELECT student_id FROM {table_name}").fetchall()))
-
+        
+        update_info = [(id, name) for id, name in student_info if id not in current_ids]
+        if not update_info:
+            return
         cur.executemany(
             f"INSERT INTO {table_name} (student_id, name) VALUES(:1, :2)",
-            [(id, name) for id, name in student_info if id not in current_ids]
+            update_info
         )
         conn.commit()
-
-    return dict(student_info)
